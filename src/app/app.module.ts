@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,9 +24,10 @@ const firebaseAppConfig: FirebaseAppConfig = {
     HomePage
   ],
   imports: [
+    AngularFireModule.initializeApp(firebaseAppConfig),
     BrowserModule,
-    IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseAppConfig)
+    HttpModule,
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
