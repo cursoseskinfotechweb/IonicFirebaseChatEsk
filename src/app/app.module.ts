@@ -10,7 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { SignupPage } from '../pages/signup/signup';
 import { UserService } from '../providers/user/user.service';
 
-import { FirebaseAppConfig } from './../environment';
+import { firebaseAppConfig } from './../environment';
 
 import { AngularFireModule } from 'angularfire2';
 
@@ -21,7 +21,7 @@ import { AngularFireModule } from 'angularfire2';
     SignupPage
   ],
   imports: [
-    AngularFireModule.initializeApp(FirebaseAppConfig),
+    AngularFireModule.initializeApp(firebaseAppConfig),
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp)
