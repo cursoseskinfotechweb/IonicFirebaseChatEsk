@@ -5,19 +5,14 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
-import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SignupPage } from '../pages/signup/signup';
+import { UserService } from '../providers/user/user.service';
 
-const firebaseAppConfig: FirebaseAppConfig = {
-  apiKey: "AIzaSyCNgFb8eXjfWyLaABMXzSTnOwr8YZg0T6A",
-  authDomain: "ionic-firebase-chat-esk.firebaseapp.com",
-  databaseURL: "https://ionic-firebase-chat-esk.firebaseio.com",
-  storageBucket: "ionic-firebase-chat-esk.appspot.com",
-  messagingSenderId: "555664314666"
-};
+import { FirebaseAppConfig } from './../environment';
+
+import { AngularFireModule } from 'angularfire2';
 
 @NgModule({
   declarations: [
@@ -26,7 +21,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     SignupPage
   ],
   imports: [
-    AngularFireModule.initializeApp(firebaseAppConfig),
+    AngularFireModule.initializeApp(FirebaseAppConfig),
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp)
@@ -40,7 +35,8 @@ const firebaseAppConfig: FirebaseAppConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserService
   ]
 })
 export class AppModule {}
