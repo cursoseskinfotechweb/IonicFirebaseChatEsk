@@ -8,17 +8,19 @@ import { UserModel } from '../../models/user.model';
 import { HttpClientModule } from '@angular/common/http';
 import { firestore } from 'firebase/app';
 import { FirebaseOperation, AngularFireList } from 'angularfire2/database/interfaces';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
 
-  users: AngularFireList<UserModel[]>;
+  users: Observable<UserModel[]>;
 
   constructor(
     public afd: AngularFireDatabase,
     public http: HttpClientModule
   ) {
-    
+    this.users = this.afd.list<UserModel>('users')
+      .valueChanges();
   }
 
   create(user: UserModel) {
