@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -10,9 +9,10 @@ import { HomePage } from '../pages/home/home';
 import { SignupPage } from '../pages/signup/signup';
 import { UserService } from '../providers/user/user.service';
 
-import { firebaseAppConfig } from './../environment';
-
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { firebaseAppConfig } from '../environment';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,9 @@ import { AngularFireModule } from 'angularfire2';
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseAppConfig),
+    AngularFireDatabaseModule,
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -40,3 +41,4 @@ import { AngularFireModule } from 'angularfire2';
   ]
 })
 export class AppModule {}
+
