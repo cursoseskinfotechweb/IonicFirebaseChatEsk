@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { AngularFireList } from 'angularfire2/database';
-import { UserModel } from '../../models/user.model';
+import { User } from '../../models/user.model';
 import { UserService } from '../../providers/user/user.service';
 import { Observable } from 'rxjs/Observable';
 
@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class HomePage {
 
-  users: Observable<UserModel[]>;
+  users: Observable<User[]>;
 
   constructor(
     public navCtrl: NavController,
@@ -29,7 +29,7 @@ export class HomePage {
     this.navCtrl.push(SignupPage)
   }
 
-  onChatCreate(user: UserModel) : void {
+  onChatCreate(user: User) : void {
     console.log(user)
   }
 

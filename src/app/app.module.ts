@@ -13,6 +13,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseAppConfig } from '../environment';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../providers/auth/auth.service';
+
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireDatabaseModule,
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,10 +37,12 @@ import { HttpClientModule } from '@angular/common/http';
     SignupPage
   ],
   providers: [
+    AuthService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserService
+    UserService,
+    AngularFireAuth,
   ]
 })
 export class AppModule {}

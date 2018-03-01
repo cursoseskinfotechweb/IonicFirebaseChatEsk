@@ -2,6 +2,9 @@ import { Component, Injectable } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../providers/user/user.service';
+import { AuthService } from '../../providers/auth/auth.service';
+import { User } from '../../models/user.model';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'page-signup',
@@ -14,6 +17,7 @@ export class SignupPage {
   signupForm : FormGroup;
 
   constructor(
+    public authService: AuthService,
     public formBuilder: FormBuilder,
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -38,11 +42,21 @@ export class SignupPage {
   }
 
   onSubmit(): void {
-    console.log(this.signupForm.value);
-    this.userService.create(this.signupForm.value)
+    
+    let user: User = this.signupForm.value;
+    
+    console.log(user);
+
+    this.authService.createAuthUser({
+      email: user.email,
+      password: user.password
+    })
+    .then((authUser: firebase.User) => {
+      this.userService.create(user)
       .then(() => {
         console.log('Usuário cadastrado com sucesso!')
       })
+    });
   }
 
 
