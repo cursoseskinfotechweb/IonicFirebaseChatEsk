@@ -1,5 +1,5 @@
 import { Component, Injectable } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Loading, LoadingController, AlertController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../providers/user/user.service';
 import { AuthService } from '../../providers/auth/auth.service';
@@ -17,8 +17,10 @@ export class SignupPage {
   signupForm : FormGroup;
 
   constructor(
+    public alertCtrl: AlertController,
     public authService: AuthService,
     public formBuilder: FormBuilder,
+    public loadingCtrl: LoadingController,
     public navCtrl: NavController, 
     public navParams: NavParams,
     public userService: UserService
@@ -43,6 +45,7 @@ export class SignupPage {
 
   onSubmit(): void {
     
+    let loading: Loading = this.showLoading();
     let formUser = this.signupForm.value;
     
     console.log(formUser);
@@ -59,9 +62,36 @@ export class SignupPage {
       this.userService.create(formUser)
       .then(() => {
         console.log('Usuário cadastrado com sucesso!')
+        loading.dismiss();
       })
+      .catch((error: Error) => {
+        console.log(error.message)
+        loading.dismiss();
+        this.showAlert(error.message);
+      })
+    })
+    .catch((error: Error) => {
+      console.log(error);
+      loading.dismiss();
+      this.showAlert(error.message);
     });
   }
 
+  private showLoading(): Loading {
+    let loading: Loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    })
+
+    loading.present();
+
+    return loading;
+  }
+
+  private showAlert(message: string): void {
+    this.alertCtrl.create({
+      message: message,
+      buttons: ['Ok']
+    }).present();
+  }
 
 }
