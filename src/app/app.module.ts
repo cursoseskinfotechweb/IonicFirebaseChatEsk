@@ -16,11 +16,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../providers/auth/auth.service';
 
 import { AngularFireAuth } from 'angularfire2/auth';
+import { SigninPage } from '../pages/signin/signin';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    SigninPage,
     SignupPage
   ],
   imports: [
@@ -34,6 +36,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   entryComponents: [
     MyApp,
     HomePage,
+    SigninPage,
     SignupPage
   ],
   providers: [
