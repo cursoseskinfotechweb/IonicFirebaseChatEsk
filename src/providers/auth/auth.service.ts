@@ -20,4 +20,13 @@ export class AuthService extends BaseService{
       .catch(this.handlePromiseError);
   }
 
+  signWithEmail(user: {email: string, password: string}): Promise<boolean> {
+    return this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password)
+      .then((user) => {
+        console.log(user);
+        return user != null;
+      })
+      .catch(this.handlePromiseError);
+  }
+
 }
