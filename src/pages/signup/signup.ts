@@ -5,6 +5,7 @@ import { UserService } from '../../providers/user/user.service';
 import { AuthService } from '../../providers/auth/auth.service';
 import { User } from '../../models/user.model';
 import * as firebase from 'firebase/app';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-signup',
@@ -68,6 +69,7 @@ export class SignupPage {
             this.userService.create(formUser)
             .then(() => {
               console.log('Usuário cadastrado com sucesso!')
+              this.navCtrl.setRoot(HomePage);
               loading.dismiss();
             })
             .catch((error: any) => {
