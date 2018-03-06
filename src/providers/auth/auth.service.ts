@@ -32,4 +32,16 @@ export class AuthService extends BaseService{
   logout(): Promise<void> {
     return this.afAuth.auth.signOut();
   }
+
+  get authenticated(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.afAuth
+        .authState
+        .first()
+        .subscribe((authUser: firebase.User) => {
+          (authUser) ? resolve(true) : reject(false);
+        });
+    });
+  }
+
 }

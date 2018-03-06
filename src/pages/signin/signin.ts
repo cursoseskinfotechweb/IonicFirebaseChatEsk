@@ -38,7 +38,7 @@ export class SigninPage {
     this.authService.signWithEmail(this.signinForm.value)
       .then((isLogged:boolean) => {
         if (isLogged) {
-          this.navCtrl.setRoot(HomePage);
+          this.navCtrl.push(HomePage);
           loading.dismiss();
         }
       })
@@ -70,5 +70,17 @@ export class SigninPage {
     }).present();
   }
 
+  onHomePage(): void {
+    this.navCtrl.push(HomePage)
+      .then((hasAccess: boolean) => {
+        console.log('Autorizado: '+hasAccess);
+      })
+      .catch(err => {
+        console.log('Não autorizado: ', err);
+      });
+  }
 
+  onLogout(): void {
+    this.authService.logout();
+  }
 }
