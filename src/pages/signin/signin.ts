@@ -81,6 +81,9 @@ export class SigninPage {
   }
 
   onLogout(): void {
-    this.authService.logout();
-  }
+    this.authService.logout()
+      .then(() => {
+        this.navCtrl.setRoot(SigninPage)
+      });
+}
 }
