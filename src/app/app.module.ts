@@ -17,11 +17,13 @@ import { AuthService } from '../providers/auth/auth.service';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { SigninPage } from '../pages/signin/signin';
+import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header.component';
 
 @NgModule({
   declarations: [
-    MyApp,
+    CustomLoggedHeaderComponent,
     HomePage,
+    MyApp,
     SigninPage,
     SignupPage
   ],
@@ -34,8 +36,8 @@ import { SigninPage } from '../pages/signin/signin';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
     HomePage,
+    MyApp,
     SigninPage,
     SignupPage
   ],
