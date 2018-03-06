@@ -18,9 +18,11 @@ import { AuthService } from '../providers/auth/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { SigninPage } from '../pages/signin/signin';
 import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header.component';
+import { CapitalizePipe } from '../pipes/capitalize.pipe';
 
 @NgModule({
   declarations: [
+    CapitalizePipe,
     CustomLoggedHeaderComponent,
     HomePage,
     MyApp,
