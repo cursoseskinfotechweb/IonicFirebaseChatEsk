@@ -16,6 +16,7 @@ import { SigninPage } from '../signin/signin';
 export class HomePage {
 
   users: Observable<User[]>;
+  view: string = 'chats';
 
   constructor(
     public navCtrl: NavController,
