@@ -28,8 +28,8 @@ export class UserService extends BaseService{
       .valueChanges();
   }
 
-  create(user: User) : Promise<void> {
-    return this.afd.object(`/users/${user.uid}`)
+  create(user: User, uuid: string) : Promise<void> {
+    return this.afd.object(`/users/${uuid}`)
       .set(user)
       .catch(this.handlePromiseError);
   }
