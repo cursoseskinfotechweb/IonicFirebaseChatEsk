@@ -19,10 +19,12 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { SigninPage } from '../pages/signin/signin';
 import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header.component';
 import { CapitalizePipe } from '../pipes/capitalize.pipe';
+import { ChatPage } from '../pages/chat/chat';
 
 @NgModule({
   declarations: [
     CapitalizePipe,
+    ChatPage, 
     CustomLoggedHeaderComponent,
     HomePage,
     MyApp,
@@ -38,6 +40,7 @@ import { CapitalizePipe } from '../pipes/capitalize.pipe';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    ChatPage,
     HomePage,
     MyApp,
     SigninPage,
