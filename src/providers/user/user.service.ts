@@ -61,6 +61,7 @@ export class UserService extends BaseService{
     this.afAuth
       .authState
       .subscribe((authUser: firebase.User) => {
+        console.log(authUser)
         if (authUser) {
           this.currentUser = this.db.object(`/users/${authUser.uid}`);
           console.log('Current User', this.currentUser);          

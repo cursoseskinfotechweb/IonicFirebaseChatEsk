@@ -15,7 +15,7 @@ import { firebaseAppConfig } from '../environment';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../providers/auth/auth.service';
 
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
 import { SigninPage } from '../pages/signin/signin';
 import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header.component';
 import { CapitalizePipe } from '../pipes/capitalize.pipe';
@@ -34,6 +34,7 @@ import { ChatService } from '../providers/chat/chat.service';
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseAppConfig),
+    AngularFireAuthModule,
     AngularFireDatabaseModule,
     BrowserModule,
     HttpClientModule,

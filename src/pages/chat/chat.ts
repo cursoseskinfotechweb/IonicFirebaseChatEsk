@@ -37,6 +37,7 @@ export class ChatPage {
       .first()
       .subscribe((currentUser: User) => {
         this.sender = currentUser;
+        console.log(' ionViewDidLoad sender', this.sender)
       })
 
   }
