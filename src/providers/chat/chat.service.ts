@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from '../base.service';
 import { Chat } from '../../models/chat.model';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 
 @Injectable()
 export class ChatService extends BaseService {
@@ -21,4 +21,8 @@ export class ChatService extends BaseService {
       .set(chat)
       .catch(this.handlePromiseError);
   }
+
+  getDeepChat(userId1: string, userId2: string): AngularFireObject<Chat> {
+    return this.db.object<Chat>(`/chats/${userId1}/${userId2}`);
+  }  
 }
