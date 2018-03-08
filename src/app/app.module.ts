@@ -20,6 +20,7 @@ import { SigninPage } from '../pages/signin/signin';
 import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/custom-logged-header.component';
 import { CapitalizePipe } from '../pipes/capitalize.pipe';
 import { ChatPage } from '../pages/chat/chat';
+import { ChatService } from '../providers/chat/chat.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ChatPage } from '../pages/chat/chat';
   ],
   providers: [
     AuthService,
+    ChatService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
