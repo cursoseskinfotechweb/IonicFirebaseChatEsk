@@ -6,6 +6,8 @@ import { UserService } from '../../providers/user/user.service';
 import { AngularFireList } from 'angularfire2/database';
 import { Message } from '../../models/message.model';
 import { MessageService } from '../../providers/message/message.service';
+
+import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -84,7 +86,22 @@ export class ChatPage {
 
 
   sendMessage(newMessage: string) :void {
-    //this.messages.push(newMessage);
+
+    if (newMessage) {
+      
+      let currentTimestamp: Object = firebase.database.ServerValue.TIMESTAMP;
+
+      this.messageService.create(
+        new Message(
+          this.sender.$key,
+          newMessage,
+          currentTimestamp
+        ),
+        this.messages
+      );
+
+    }
+
   }
 
   private scrollToBottom(duration?: number): void {
