@@ -3,12 +3,14 @@ import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { AuthService } from '../../providers/auth/auth.service';
 import { User } from '../../models/user.model';
 import { UserService } from '../../providers/user/user.service';
-import { AngularFireList } from 'angularfire2/database';
+import { AngularFireList, AngularFireObject } from 'angularfire2/database';
 import { Message } from '../../models/message.model';
 import { MessageService } from '../../providers/message/message.service';
 
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
+import { Chat } from '../../models/chat.model';
+import { ChatService } from '../../providers/chat/chat.service';
 
 @Component({
   selector: 'page-chat',
@@ -22,9 +24,12 @@ export class ChatPage {
   pageTitle: string;
   sender: User;
   recipient: User;
+  private chat1: AngularFireObject<Chat>;
+  private chat2: AngularFireObject<Chat>;
 
   constructor(
     public authService: AuthService,
+    public chatService: ChatService,
     public messageService: MessageService,
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -46,7 +51,9 @@ export class ChatPage {
       .first()
       .subscribe((currentUser: User) => {
         this.sender = currentUser;
-        console.log(' ionViewDidLoad sender', this.sender)
+    
+        this.chat1 = this.chatService.getDeepChat(this.sender.$key, this.recipient.$key);
+        this.chat2 = this.chatService.getDeepChat(this.recipient.$key, this.sender.$key);    
 
         let doSubscription = () => {
           this.viewMessages = this.messageService.mapListKeys<Message>(this.messages);
@@ -98,7 +105,20 @@ export class ChatPage {
           currentTimestamp
         ),
         this.messages
-      );
+      ).then(() => {
+
+        this.chat1
+        .update({
+          lastMessage: newMessage,
+          timestamp: currentTimestamp
+        });
+
+      this.chat2
+        .update({
+          lastMessage: newMessage,
+          timestamp: currentTimestamp
+        });        
+      });
 
     }
 
