@@ -62,7 +62,6 @@
             "timestamp": 1491499435726
         },
         "message-uid-02": {
-            "sender": "Iron Man",
             "userId": "iron-man-uid",
             "text": "Hey War Machine!",
             "timestamp": 1491499434895
@@ -70,7 +69,6 @@
     },
     "other-user-uid + iron-man-uid": {
         "message-uid-01": {
-            "sender": "Other User",
             "userId": "other-user-uid",
             "text": "Hello!",
             "timestamp": 1491499435726
