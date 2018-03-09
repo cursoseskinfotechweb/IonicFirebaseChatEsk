@@ -21,6 +21,7 @@ import { CustomLoggedHeaderComponent } from '../components/custom-logged-header/
 import { CapitalizePipe } from '../pipes/capitalize.pipe';
 import { ChatPage } from '../pages/chat/chat';
 import { ChatService } from '../providers/chat/chat.service';
+import { MessageService } from '../providers/message/message.service';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ChatService } from '../providers/chat/chat.service';
   providers: [
     AuthService,
     ChatService,
+    MessageService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
