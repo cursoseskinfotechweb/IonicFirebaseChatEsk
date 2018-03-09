@@ -70,6 +70,10 @@ export class UserService extends BaseService{
         }
       }
     );
-}
+  }
+
+  get(userId: string): AngularFireObject<User> {
+    return this.db.object<User>(`/users/${userId}`);
+  }
 
 }
