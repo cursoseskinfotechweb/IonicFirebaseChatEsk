@@ -86,4 +86,25 @@ export class HomePage {
       recipientUser: recipientUser
     });
   }
+
+  onChatOpen(chat: Chat): void {
+
+    let recipientUserId: string = chat.$key;    
+
+    this.userService.mapObjectKey<User>(
+      this.userService.get(recipientUserId)
+    )
+    .first()
+    .subscribe((user: User) => {        
+
+      this.navCtrl.push(ChatPage, {
+        recipientUser: user
+      });
+
+    });
+
+  }
+
+
+  
 }
