@@ -19,6 +19,7 @@ import * as firebase from 'firebase/app';
 })
 export class HomePage {
 
+  chats: Observable<Chat[]>;
   users: Observable<User[]>;
   view: string = 'chats';
 
@@ -35,6 +36,8 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
+    this.chats = this.chatService.mapListKeys<Chat>(this.chatService.chats)
+      .map((chats: Chat[]) => chats.reverse());
     this.users =  this.userService.users
   }
 
