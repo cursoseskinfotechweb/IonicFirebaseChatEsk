@@ -22,6 +22,7 @@ import { CapitalizePipe } from '../pipes/capitalize.pipe';
 import { ChatPage } from '../pages/chat/chat';
 import { ChatService } from '../providers/chat/chat.service';
 import { MessageService } from '../providers/message/message.service';
+import { MessageBoxComponent } from '../components/message-box/message-box.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MessageService } from '../providers/message/message.service';
     ChatPage, 
     CustomLoggedHeaderComponent,
     HomePage,
+    MessageBoxComponent,
     MyApp,
     SigninPage,
     SignupPage
