@@ -18,6 +18,7 @@ import { ChatService } from '../../providers/chat/chat.service';
 })
 export class ChatPage {
 
+  // viewChild content mensagem
   @ViewChild(Content) content: Content;
   messages: AngularFireList<Message>;
   viewMessages: Observable<Message[]>;
@@ -55,10 +56,12 @@ export class ChatPage {
         this.chat1 = this.chatService.getDeepChat(this.sender.$key, this.recipient.$key);
         this.chat2 = this.chatService.getDeepChat(this.recipient.$key, this.sender.$key);    
 
+        // ScrollToBottom das mensagens
         let doSubscription = () => {
           this.viewMessages = this.messageService.mapListKeys<Message>(this.messages);
           this.viewMessages
             .subscribe((messages: Message[]) => {
+              // ScrollToBottom das mensagens
               this.scrollToBottom();
             }
           );
@@ -77,9 +80,11 @@ export class ChatPage {
               this.messages = this.messageService
                 .getMessages(this.recipient.$key, this.sender.$key);
 
+              // ScrollToBottom das mensagens
               doSubscription();
 
             } else {
+              // ScrollToBottom das mensagens
               doSubscription();
             }
 
@@ -124,6 +129,7 @@ export class ChatPage {
 
   }
 
+  // Adicionado para scrollToBottom mensagem
   private scrollToBottom(duration?: number): void {
     setTimeout(() => {
       if (this.content._scroll) {
