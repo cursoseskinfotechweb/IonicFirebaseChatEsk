@@ -45,4 +45,16 @@ export class ChatService extends BaseService {
   getDeepChat(userId1: string, userId2: string): AngularFireObject<Chat> {
     return this.db.object<Chat>(`/chats/${userId1}/${userId2}`);
   }  
+
+  updatePhoto(chat: AngularFireObject<Chat>, chatPhoto: string, recipientUserPhoto: string): Promise<boolean> {
+    if (chatPhoto != recipientUserPhoto) {
+      return chat.update({
+        photo: recipientUserPhoto
+      }).then(() => {
+        return true;
+      }).catch(this.handlePromiseError);
+    }
+    return Promise.resolve(false);
+  }
+
 }
