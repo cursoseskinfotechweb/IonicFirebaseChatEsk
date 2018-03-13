@@ -24,6 +24,7 @@ import { ChatService } from '../providers/chat/chat.service';
 import { MessageService } from '../providers/message/message.service';
 import { MessageBoxComponent } from '../components/message-box/message-box.component';
 import { UserInfoComponent } from '../components/user-info/user-info.component';
+import { UserMenuComponent } from '../components/user-menu/user-menu.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { UserInfoComponent } from '../components/user-info/user-info.component';
     MyApp,
     SigninPage,
     SignupPage,
-    UserInfoComponent
+    UserInfoComponent,
+    UserMenuComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseAppConfig),
