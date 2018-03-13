@@ -25,6 +25,7 @@ import { MessageService } from '../providers/message/message.service';
 import { MessageBoxComponent } from '../components/message-box/message-box.component';
 import { UserInfoComponent } from '../components/user-info/user-info.component';
 import { UserMenuComponent } from '../components/user-menu/user-menu.component';
+import { UserProfilePage } from '../pages/user-profile/user-profile';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { UserMenuComponent } from '../components/user-menu/user-menu.component';
     SigninPage,
     SignupPage,
     UserInfoComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    UserProfilePage
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseAppConfig),
@@ -53,7 +55,8 @@ import { UserMenuComponent } from '../components/user-menu/user-menu.component';
     HomePage,
     MyApp,
     SigninPage,
-    SignupPage
+    SignupPage,
+    UserProfilePage
   ],
   providers: [
     AuthService,
