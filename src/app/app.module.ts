@@ -23,6 +23,7 @@ import { ChatPage } from '../pages/chat/chat';
 import { ChatService } from '../providers/chat/chat.service';
 import { MessageService } from '../providers/message/message.service';
 import { MessageBoxComponent } from '../components/message-box/message-box.component';
+import { UserInfoComponent } from '../components/user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MessageBoxComponent } from '../components/message-box/message-box.compo
     MessageBoxComponent,
     MyApp,
     SigninPage,
-    SignupPage
+    SignupPage,
+    UserInfoComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseAppConfig),
