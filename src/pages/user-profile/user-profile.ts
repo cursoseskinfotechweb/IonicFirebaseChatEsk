@@ -12,6 +12,7 @@ export class UserProfilePage {
 
   currentUser: User;
   canEdit: boolean = false;
+  uploadProgress: number;
   private filePhoto: File;
 
   constructor(
@@ -44,6 +45,8 @@ export class UserProfilePage {
 
       uploadTask.on('state_changed', (snapshot: firebase.storage.UploadTaskSnapshot) => {
 
+        this.uploadProgress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+
       }, (error: Error) => {
         // catch error
       });
@@ -55,6 +58,7 @@ export class UserProfilePage {
     } else {
       this.editUser();
     }
+
   }
 
   private editUser(photoUrl?: string): void {
@@ -65,6 +69,8 @@ export class UserProfilePage {
         photo: photoUrl || this.currentUser.photo || ''
       }).then(() => {
         this.canEdit = false;
+        this.filePhoto = undefined;
+        this.uploadProgress = 0;
       });
   }
 
