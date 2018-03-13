@@ -41,6 +41,40 @@ export class HomePage {
     this.users =  this.userService.users
   }
 
+  filterItems(event: any): void {
+    let searchTerm: string = event.target.value;
+
+    this.chats = this.chatService.mapListKeys<Chat>(this.chatService.chats)
+      .map((chats: Chat[]) => chats.reverse());
+    this.users =  this.userService.users
+
+    if (searchTerm) {
+
+      switch(this.view) {
+
+        case 'chats':
+          this.chats = this.chats
+            .map((chats: Chat[]) => {
+              return chats.filter((chat: Chat) => {
+                return (chat.title && chat.title.toLowerCase().indexOf(searchTerm.toLocaleLowerCase()) > -1)
+              })
+            });
+          break;
+          
+        case 'users':
+          this.users = this.users
+            .map((users: User[]) => {
+              return users.filter((user: User) => {
+                return (user.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1)
+              })
+            });
+          break;
+
+      }
+
+    }    
+  }
+
   onSignup(): void {
     this.navCtrl.push(SignupPage);
   }

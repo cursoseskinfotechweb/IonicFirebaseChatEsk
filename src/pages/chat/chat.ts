@@ -96,7 +96,6 @@ export class ChatPage {
 
   }
 
-
   sendMessage(newMessage: string) :void {
 
     if (newMessage) {
