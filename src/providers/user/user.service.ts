@@ -47,6 +47,12 @@ export class UserService extends BaseService{
       .catch(this.handlePromiseError);
   }
 
+  edit(user: {name: string, username: string, photo: string}): Promise<void> {
+    return this.currentUser
+      .update(user)
+      .catch(this.handlePromiseError);
+  }
+
   userExists(username: string) : Observable<boolean> {
     return this.db.list(`/users`, 
       (ref: firebase.database.Reference) => ref.orderByChild('name').equalTo(username)
