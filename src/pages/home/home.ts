@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { AngularFireList } from 'angularfire2/database';
 import { User } from '../../models/user.model';
@@ -26,6 +26,7 @@ export class HomePage {
   constructor(
     public authService: AuthService,
     public chatService: ChatService,
+    public menuCtrl: MenuController,
     public navCtrl: NavController,
     public userService: UserService
   ) {
@@ -39,6 +40,8 @@ export class HomePage {
     this.chats = this.chatService.mapListKeys<Chat>(this.chatService.chats)
       .map((chats: Chat[]) => chats.reverse());
     this.users =  this.userService.users
+
+    this.menuCtrl.enable(true, 'user-menu');
   }
 
   filterItems(event: any): void {
