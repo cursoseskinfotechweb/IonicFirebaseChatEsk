@@ -12,6 +12,7 @@ export class UserProfilePage {
 
   currentUser: User;
   canEdit: boolean = false;
+  private filePhoto: File;
 
   constructor(
     public authService: AuthService,
@@ -49,6 +50,11 @@ export class UserProfilePage {
       }).then(() => {
         this.canEdit = false;
       });
+  }
+
+  onPhoto(event): void {  
+    console.log(event.target.files);
+    this.filePhoto = event.target.files[0];
   }
 
 
