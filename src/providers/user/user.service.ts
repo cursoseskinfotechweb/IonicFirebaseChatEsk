@@ -2,7 +2,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireModule, FirebaseApp } from 'angularfire2';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
-//import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/first';
 import { User } from '../../models/user.model';
@@ -13,7 +14,8 @@ import { Observable } from 'rxjs/Observable';
 import { BaseService } from '../base.service';
 
 import * as firebase from 'firebase/app';
-import { AngularFireAuth } from 'angularfire2/auth';
+import 'firebase/storage';
+
 
 @Injectable()
 export class UserService extends BaseService{
@@ -24,6 +26,7 @@ export class UserService extends BaseService{
   constructor(
     public afAuth: AngularFireAuth,
     public db: AngularFireDatabase,
+    public firebaseApp: FirebaseApp,
     public http: HttpClientModule
   ) {
     super();
@@ -80,6 +83,14 @@ export class UserService extends BaseService{
 
   get(userId: string): AngularFireObject<User> {
     return this.db.object<User>(`/users/${userId}`);
+  }
+
+  uploadPhoto(file: File, userId: string): firebase.storage.UploadTask {
+    return this.firebaseApp
+      .storage()
+      .ref()
+      .child(`/users/${userId}`)
+      .put(file);
   }
 
 }
