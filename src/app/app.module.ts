@@ -26,6 +26,7 @@ import { MessageBoxComponent } from '../components/message-box/message-box.compo
 import { UserInfoComponent } from '../components/user-info/user-info.component';
 import { UserMenuComponent } from '../components/user-menu/user-menu.component';
 import { UserProfilePage } from '../pages/user-profile/user-profile';
+import { ProgressBarComponent } from '../components/progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { UserProfilePage } from '../pages/user-profile/user-profile';
     HomePage,
     MessageBoxComponent,
     MyApp,
+    ProgressBarComponent,
     SigninPage,
     SignupPage,
     UserInfoComponent,
