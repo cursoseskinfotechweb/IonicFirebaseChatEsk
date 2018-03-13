@@ -15,7 +15,7 @@ export class MessageBoxComponent {
   @Input() isFromSender: boolean;
 
   constructor() {
-    console.log('Hello MessageBoxComponent Component');
+    // console.log('Hello MessageBoxComponent Component');
   }
 
 }

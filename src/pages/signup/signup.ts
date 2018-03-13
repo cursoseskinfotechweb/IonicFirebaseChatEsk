@@ -3,7 +3,6 @@ import { NavController, NavParams, Loading, LoadingController, AlertController }
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../providers/user/user.service';
 import { AuthService } from '../../providers/auth/auth.service';
-import { User } from '../../models/user.model';
 import * as firebase from 'firebase/app';
 import { HomePage } from '../home/home';
 
@@ -41,7 +40,7 @@ export class SignupPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
+    // console.log('ionViewDidLoad SignupPage');
   }
 
   onSubmit(): void {
@@ -50,7 +49,7 @@ export class SignupPage {
     let formUser = this.signupForm.value;
     let username: string = formUser.username;
     
-    console.log(formUser);
+    // console.log(formUser);
 
     this.userService.userExists(username)
       .first()
@@ -68,18 +67,18 @@ export class SignupPage {
       
             this.userService.create(formUser, uuid)
             .then(() => {
-              console.log('Usuário cadastrado com sucesso!')
+              // console.log('Usuário cadastrado com sucesso!')
               this.navCtrl.setRoot(HomePage);
               loading.dismiss();
             })
             .catch((error: any) => {
-              console.log(error)
+              // console.log(error)
               loading.dismiss();
               this.showAlert(error);
             })
           })
           .catch((error: any) => {
-            console.log(error);
+            // console.log(error);
             loading.dismiss();
             this.showAlert(error);
           });

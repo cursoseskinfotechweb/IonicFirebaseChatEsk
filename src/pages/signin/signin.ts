@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, Loading, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, Loading, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SignupPage } from '../signup/signup';
 import { AuthService } from '../../providers/auth/auth.service';
@@ -43,7 +43,7 @@ export class SigninPage {
         }
       })
       .catch((error: any) => {
-        console.log(error);
+        // console.log(error);
         loading.dismiss();
         this.showAlert(error);
       });
@@ -70,20 +70,4 @@ export class SigninPage {
     }).present();
   }
 
-  onHomePage(): void {
-    this.navCtrl.push(HomePage)
-      .then((hasAccess: boolean) => {
-        console.log('Autorizado: '+hasAccess);
-      })
-      .catch(err => {
-        console.log('Não autorizado: ', err);
-      });
-  }
-
-  onLogout(): void {
-    this.authService.logout()
-      .then(() => {
-        this.navCtrl.setRoot(SigninPage)
-      });
-}
 }

@@ -6,7 +6,6 @@ import { BaseService } from '../base.service';
 import { Message } from '../../models/message.model';
 
 import * as firebase from 'firebase/app';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class MessageService extends BaseService{
@@ -23,7 +22,7 @@ export class MessageService extends BaseService{
   }
 
   getMessages(userId1: string, userId2: string): AngularFireList<Message> {    
-    console.log(userId1, userId2);
+    // console.log(userId1, userId2);
     
     return this.db.list(`/messages/${userId1}-${userId2}`, 
       (ref: firebase.database.Reference) => ref.limitToLast(30).orderByChild('timestamp')

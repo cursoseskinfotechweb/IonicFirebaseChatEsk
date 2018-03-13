@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { AuthService } from '../../providers/auth/auth.service';
 import { User } from '../../models/user.model';
 import { UserService } from '../../providers/user/user.service';
@@ -75,7 +75,7 @@ export class UserProfilePage {
   }
 
   onPhoto(event): void {  
-    console.log(event.target.files);
+    // console.log(event.target.files);
     this.filePhoto = event.target.files[0];
   }
 

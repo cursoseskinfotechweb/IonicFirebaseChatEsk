@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
-import { AngularFireList } from 'angularfire2/database';
 import { User } from '../../models/user.model';
 import { UserService } from '../../providers/user/user.service';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../../providers/auth/auth.service';
-import { SigninPage } from '../signin/signin';
 import { ChatPage } from '../chat/chat';
 import { ChatService } from '../../providers/chat/chat.service';
 import { Chat } from '../../models/chat.model';

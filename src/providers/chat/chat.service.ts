@@ -30,7 +30,7 @@ export class ChatService extends BaseService {
             (ref: firebase.database.Reference) => ref.orderByChild('timestamp')
           );
           
-          console.log('Lista de chats: ', this.chats)
+          // console.log('Lista de chats: ', this.chats)
         }
       }
     );
